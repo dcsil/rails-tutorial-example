@@ -1,20 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @channel.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @channel.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @channel.user_id %>
-</p>
-
-<%= link_to "Leave Channel", channel_membership_path(@channel, @active_membership), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure you want to leave #{@channel.name}?" } %>
-<%= link_to 'Edit', edit_channel_path(@channel) %> |
-<%= link_to 'Back', channels_path %>
+<div class="d-flex flex-column height-full">
+  <div class="flex-shrink-0 color-bg-canvas-inverse color-text-inverse p-2 d-flex flex-justify-between flex-items-center">
+    <div>
+      <h1><%= @channel.name %></h1>
+      <p><%= @channel.description %></p>
+    </div>
+    <div>
+      <% if current_user == @channel.creator %>
+        <%= link_to 'Edit', edit_channel_path(@channel), class: "btn btn-sm" %>
+      <% end %>
+      <%= link_to "Leave Channel", channel_membership_path(@channel, @active_membership), class: "btn btn-sm btn-danger", method: :delete, data: { confirm: "Are you sure you want to leave #{@channel.name}?" } %>
+    </div>
+  </div>
+  <div style="overflow: scroll;" class="flex-auto p-3">
+    <p id="notice"><%= notice %></p>
+    <% @channel.messages.each do |message| %>
+      <p><%= message.content %>
+    <% end %>
+  </div>
+  <div style="height: 175px" class="color-bg-canvas-inverse color-text-inverse p-3">
+    <%= form_with model: [@channel, @channel.messages.build], local: false do |form| %>
+      <%= form.rich_text_area :content, class: "color-bg-canvas color-text-primary p-1" %>
+      <%= form.submit "Send Message", class: "btn btn-sm mt-2" %>
+    <% end %>
+  </div>
+</div>

@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem "devise"
 gem 'discard', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

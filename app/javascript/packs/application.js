@@ -16,3 +16,15 @@ ActiveStorage.start()
 
 require("trix")
 require("@rails/actiontext")
+
+document.addEventListener("turbolinks:load", () => {
+  const forms = document.querySelectorAll('form[data-remote="true"]');
+  forms.forEach(form => {
+    form.addEventListener("ajax:success", (event) => {
+      window.location.reload();
+    });
+    form.addEventListener("ajax:error", (event) => {
+      alert(event.detail[0]);
+    });
+  });
+});

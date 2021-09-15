@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :messages
   resources :channels do
+    resources :messages, only: [:create, :update, :destroy]
     resources :memberships, only: :destroy
   end
 

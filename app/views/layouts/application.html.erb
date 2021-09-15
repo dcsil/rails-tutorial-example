@@ -14,7 +14,7 @@
   <body>
     <% if user_signed_in? %>
       <div class="d-flex height-full">
-        <nav class="col-2 pt-5 color-bg-canvas-inverse color-text-inverse menu" aria-label="Person settings">
+        <nav class="col-2 pt-5 m-0 color-bg-canvas-inverse color-text-inverse menu border-0 rounded-0" aria-label="Channels">
           <% current_user.active_channels.each do |channel| %>
             <a class="menu-item color-text-inverse d-flex flex-justify-between" href="<%= channel_path(channel) %>">
               <span><%= channel.name %></span>
@@ -22,7 +22,7 @@
             </a>
           <% end %>
         </nav>
-        <div class="col-10 p-2">
+        <div class="col-10">
           <%= yield %>
         </div>
       </div>
