@@ -2,31 +2,21 @@
 
 <h1>Users</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Preferred pronouns</th>
-      <th>Bio</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="Box">
+  <ul>
     <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.preferred_pronouns %></td>
-        <td><%= user.bio %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <li class="Box-row">
+        <div><%= user.name %></div>
+        <div><%= user.email %></div>
+        <div><%= user.preferred_pronouns %></div>
+        <div><%= user.bio %></div>
+        <div><%= link_to 'Show', user %></div>
+        <div><%= link_to 'Edit', edit_user_path(user) %></div>
+        <div><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      </li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
+</div>
 
 <br>
 
