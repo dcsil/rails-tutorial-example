@@ -8,6 +8,7 @@ class ChannelsController < ApplicationController
 
   # GET /channels/1 or /channels/1.json
   def show
+    current_user.memberships.find_or_create_by!(channel: @channel)
   end
 
   # GET /channels/new

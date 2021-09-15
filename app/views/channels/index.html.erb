@@ -2,20 +2,29 @@
 
 <h1>Channels</h1>
 
-<div class="Box">
-  <ul>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
     <% @channels.each do |channel| %>
-      <li class="Box-row">
-        <div><%= channel.name %></div>
-        <div><%= channel.description %></div>
-        <div><%= channel.user_id %></div>
-        <div><%= link_to 'Show', channel %></div>
-        <div><%= link_to 'Edit', edit_channel_path(channel) %></div>
-        <div><%= link_to 'Destroy', channel, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-      </li>
+      <tr>
+        <td><%= channel.name %></td>
+        <td><%= channel.description %></td>
+        <td><%= channel.user_id %></td>
+        <td><%= link_to 'Show', channel %></td>
+        <td><%= link_to 'Edit', edit_channel_path(channel) %></td>
+        <td><%= link_to 'Destroy', channel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
-  </ul>
-</div>
+  </tbody>
+</table>
 
 <br>
 
