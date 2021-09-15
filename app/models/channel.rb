@@ -6,4 +6,8 @@ class Channel < ApplicationRecord
 
   validates :name, length: { maximum: 80 }, presence: true, uniqueness: true
   validates :description, length: { maximum: 240 }
+
+  def member?(user)
+    memberships.exists?(user_id: user.id)
+  end
 end

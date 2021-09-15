@@ -1,23 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
+<div class="d-flex flex-justify-between flex-items-center">
+  <h1>Users</h1>
+  <div><%= link_to 'New user', new_user_path, class: "btn btn-sm btn-primary" %></div>
+</div>
 
 <div class="Box">
   <ul>
     <% @users.each do |user| %>
-      <li class="Box-row">
-        <div><%= user.name %></div>
-        <div><%= user.email %></div>
-        <div><%= user.preferred_pronouns %></div>
-        <div><%= user.bio %></div>
-        <div><%= link_to 'Show', user %></div>
-        <div><%= link_to 'Edit', edit_user_path(user) %></div>
-        <div><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      <li class="Box-row d-flex flex-justify-between">
+        <div>
+          <h2><%= user.name %><% if user.preferred_pronouns.present? %> <small><%= user.preferred_pronouns %></small><% end %></h2>
+          <p><%= user.bio %></p>
+        </div>
+        <div class="d-flex flex-column">
+          <%= link_to 'See profile', user, class: "btn btn-primary" %>
+          <% if user == current_user %>
+            <div><%= link_to 'Edit', edit_user_path(user), class: "btn mt-1" %></div>
+            <div><%= link_to 'Destroy', user, method: :delete, data: { confirm: "Are you sure you want to delete your account?" }, class: "btn mt-1 btn-danger" %></div>
+          <% end %>
+        </div>
       </li>
     <% end %>
   </ul>
 </div>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
