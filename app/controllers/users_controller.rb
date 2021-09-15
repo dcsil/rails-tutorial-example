@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :ensure_user!, only: [:edit, :update, :destroy]
 
   # GET /users or /users.json
   def index
@@ -57,6 +58,12 @@ class UsersController < ApplicationController
   end
 
   private
+    def ensure_user!
+      return if @user == current_user
+      redirect_to channels_url, notice: "You can only edit or delete yourself."
+      false # Prevent the action from continuing
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])

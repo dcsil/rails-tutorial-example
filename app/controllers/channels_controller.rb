@@ -1,5 +1,6 @@
 class ChannelsController < ApplicationController
   before_action :set_channel, only: %i[ show edit update destroy ]
+  before_action :ensure_creator!, only: [:edit, :update, :destroy]
 
   # GET /channels or /channels.json
   def index
@@ -58,6 +59,13 @@ class ChannelsController < ApplicationController
   end
 
   private
+
+    def ensure_creator!
+      return if @channel.creator == current_user
+      redirect_to channels_url, notice: "You can only edit or delete your own channels."
+      false # Prevent the action from continuing
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_channel
       @channel = Channel.find(params[:id])
