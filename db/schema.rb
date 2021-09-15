@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_15_004119) do
+ActiveRecord::Schema.define(version: 2021_09_15_143543) do
 
   create_table "channels", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -26,7 +26,9 @@ ActiveRecord::Schema.define(version: 2021_09_15_004119) do
     t.bigint "channel_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
     t.index ["channel_id"], name: "index_memberships_on_channel_id"
+    t.index ["discarded_at"], name: "index_memberships_on_discarded_at"
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 

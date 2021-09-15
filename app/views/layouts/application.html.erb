@@ -18,7 +18,7 @@
           <% current_user.channels.each do |channel| %>
             <a class="menu-item color-text-inverse d-flex flex-justify-between" href="<%= channel_path(channel) %>">
               <span><%= channel.name %></span>
-              <span class="Counter color-bg-canvas"><%= channel.members.count %></span>
+              <span class="Counter color-bg-canvas"><%= channel.active_members.count %></span>
             </a>
           <% end %>
         </nav>
