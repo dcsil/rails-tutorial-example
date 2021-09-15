@@ -7,6 +7,8 @@ class Channel < ApplicationRecord
   has_many :active_memberships, -> { kept }, class_name: "Membership"
   has_many :active_members, through: :active_memberships, source: :user
 
+  has_many :messages, as: :recipient
+
   validates :name, length: { maximum: 80 }, presence: true, uniqueness: true
   validates :description, length: { maximum: 240 }
 
