@@ -1,5 +1,5 @@
 class Channel < ApplicationRecord
-  belongs_to :creator, class_name: "User", foreign_key: :user_id
+  belongs_to :creator, class_name: "User", foreign_key: :user_id, optional: true
 
   has_many :memberships
   has_many :members, through: :memberships, source: :user

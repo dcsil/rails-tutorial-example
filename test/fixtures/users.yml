@@ -2,12 +2,12 @@
 
 one:
   name: MyString
-  email: MyString
+  email: one@example.com
   preferred_pronouns: MyString
   bio: MyText
 
 two:
   name: MyString
-  email: MyString
+  email: two@example.com
   preferred_pronouns: MyString
   bio: MyText

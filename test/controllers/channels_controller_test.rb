@@ -1,8 +1,11 @@
 require "test_helper"
 
 class ChannelsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @channel = channels(:one)
+    sign_in(@channel.creator)
   end
 
   test "should get index" do

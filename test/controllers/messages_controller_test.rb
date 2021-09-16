@@ -1,8 +1,11 @@
 require "test_helper"
 
 class MessagesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @message = messages(:one)
+    sign_in(@message.sender)
   end
 
   test "should get index" do
