@@ -2,10 +2,8 @@
 
 one:
   sender: one
-  recipient: one
-  recipient_type: Recipient
+  recipient: one (Channel)
 
 two:
   sender: two
-  recipient: two
-  recipient_type: Recipient
+  recipient: two (Channel)
